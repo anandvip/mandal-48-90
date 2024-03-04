@@ -93,6 +93,8 @@
   </div>
 
   <script>
+ 
+    
     function debounce(func, wait) {
       let timeout;
       return function (...args) {
@@ -106,6 +108,29 @@
       const trackerContainer = document.getElementById('tracker-container');
 
       const weeksData = JSON.parse(localStorage.getItem('weeksData')) || [];
+           const totalDays = 05;
+  for (let i = 0; i < totalDays; i++) {
+    const dayDiv = document.createElement('div');
+    dayDiv.classList.add('day');
+
+    const morningSession = document.createElement('div');
+    morningSession.classList.add('session');
+    morningSession.addEventListener('click', function() {
+      this.classList.add('completed');
+    });
+
+    const eveningSession = document.createElement('div');
+    eveningSession.classList.add('session');
+    eveningSession.addEventListener('click', function() {
+      this.classList.add('completed');
+    });
+
+    const verticalLine = document.createElement('div');
+    verticalLine.classList.add('vertical-line');
+
+    dayDiv.appendChild(morningSession);
+    dayDiv.appendChild(verticalLine);
+    dayDiv.appendChild(eveningSession);
 
       // Generate Weeks
       for (let weekNum = 0; weekNum < weeksData.length; weekNum++) {
