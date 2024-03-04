@@ -6,6 +6,86 @@
   <title>Meditation Progress Tracker</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+.tracker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.week {
+  margin-bottom: 10px;
+}
+
+.summary {
+  cursor: pointer;
+  padding: 5px;
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  border: none;
+}
+
+.day {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.session-container { /* Container for better positioning flexibility */
+  display: flex;
+  align-items: center;
+}
+
+.session {
+  width: 20px;
+  height: 5px;
+  background-color: black;
+  margin: 0 2px;
+  transition: background-color 0.3s;
+}
+
+.completed {
+  background-color: #ff69b4; 
+}
+
+.vertical-line {
+  width: 2px;
+  height: 80px;
+  background-color: black;
+}
+
+.edit-notes {
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.notes-count {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 50%;
+  background-color: #ff69b4;
+  color: white;
+  text-align: center;
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+.completion-timeM { 
+  position: relative;    
+  font-size: 0.5rem;
+  margin-right: 5px; /* Example positioning */
+}
+
+.completion-timeE { 
+  position: relative;     
+  font-size: 0.5rem;
+  margin-left: 5px; /* Example positioning */
+}
 
     
   </style>
