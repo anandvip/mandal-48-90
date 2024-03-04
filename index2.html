@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meditation Progress Tracker</title>
+  <style>
+    /* Same CSS as before */
+  </style>
+</head>
+<body>
+  <div class="tracker-container" id="tracker-container">
+  </div>
+
+  <script>
+    function debounce(func, wait) {
+      let timeout;
+      return function (...args) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+      };
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const trackerContainer = document.getElementById('tracker-container');
+
+      const weeksData = JSON.parse(localStorage.getItem('weeksData')) || [];
+
+      // Generate Weeks
+      for (let weekNum = 0; weekNum < weeksData.length; weekNum++) {
+        // ... (same as before)
+      }
+
+      const saveWeeksData = debounce(function() {
+        localStorage.setItem('weeksData', JSON.stringify(weeksData));
+      }, 500);
+
+      window.addEventListener('beforeunload', saveWeeksData);
+    });
+
+    function createSessionDiv(isMorningSession, dayData) {
+      // ... (same as before)
+    }
+
+    function updateWeeksData() {
+      // ... (same as before)
+    }
+  </script>
+</body>
+</html>
