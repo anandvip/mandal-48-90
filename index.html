@@ -135,6 +135,55 @@
       // Generate Weeks
       for (let weekNum = 0; weekNum < weeksData.length; weekNum++) {
         // ... (same as before)
+        for (let weekNum = -3; weekNum <= -1; weekNum++) {
+    const week = document.createElement('details');
+    week.classList.add('week');
+
+    const summary = document.createElement('summary');
+    summary.classList.add('summary');
+    summary.textContent = `week ${weekNum}`;
+
+    week.appendChild(summary);
+
+    // Create days dynamically
+    for (let dayNum = 1; dayNum <= 7; dayNum++) {
+      const dayDiv = document.createElement('div');
+      dayDiv.classList.add('day');
+
+      const morningSession = createSessionDiv();
+      const eveningSession = createSessionDiv();
+
+      const verticalLine = document.createElement('div');
+      verticalLine.classList.add('vertical-line');
+
+      const editNotes = document.createElement('span');
+      editNotes.classList.add('edit-notes');
+      editNotes.innerHTML = '&#9998;';
+      editNotes.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent the details from toggling
+        const notes = prompt('Edit your notes:', this.nextSibling.textContent);
+        if (notes !== null) {
+          this.nextSibling.textContent = notes;
+        }
+      });
+
+      const notesCount = document.createElement('span');
+      notesCount.classList.add('notes-count');
+      notesCount.textContent = '5';
+
+      dayDiv.appendChild(morningSession);
+      dayDiv.appendChild(verticalLine);
+      dayDiv.appendChild(eveningSession);
+      dayDiv.appendChild(editNotes);
+      dayDiv.appendChild(notesCount);
+
+      week.appendChild(dayDiv);
+    }
+
+    trackerContainer.appendChild(week);
+  }
+});
+
       }
 
       const saveWeeksData = debounce(function() {
@@ -142,7 +191,6 @@
       }, 500);
 
       window.addEventListener('beforeunload', saveWeeksData);
-    });
 
     function createSessionDiv(isMorningSession, dayData) {
       // ... (same as before)
